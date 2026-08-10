@@ -1,0 +1,25 @@
+# Copy to zsh/local.zsh (gitignored) for anything machine-specific or private.
+#
+#   cp zsh/local.zsh.example zsh/local.zsh
+#
+# ~/.zshrc.local is also sourced, after everything else, if you prefer to keep
+# machine-local config outside the repo entirely.
+
+# ---------------------------------------------------------------------------
+# Herd PHP ini-scan directories.
+#
+# Herd writes these into ~/.zshrc itself when it installs, and the Oh My Zsh
+# installer moved them aside into ~/.zshrc.pre-oh-my-zsh at some point. They're
+# preserved here for reference. Leave them commented unless Herd has stopped
+# injecting them — otherwise you'll be fighting the app over the same exports.
+# ---------------------------------------------------------------------------
+
+# export HERD_PHP_74_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/74/"
+# export HERD_PHP_80_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/80/"
+# export HERD_PHP_81_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/81/"
+# export HERD_PHP_82_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/82/"
+# export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+# export HERD_PHP_84_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/84/"
+# export HERD_PHP_85_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/85/"
+
+# API tokens, work-only aliases, per-machine PATH entries, etc. go here.

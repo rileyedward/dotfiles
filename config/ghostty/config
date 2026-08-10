@@ -1,0 +1,7 @@
+# Match Neovim's catppuccin-macchiato colorscheme
+theme = Catppuccin Macchiato
+
+# Nerd Font variant — LazyVim's icons (mini.icons, lualine, bufferline, snacks)
+# render as tofu without it. Installed by the Brewfile.
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14

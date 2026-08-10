@@ -1,0 +1,15 @@
+# Machine-local overrides
+*.local
+zsh/local.zsh
+!zsh/local.zsh.example
+
+# Never, under any circumstances
+id_*
+!id_*.pub.example
+*.pem
+*.key
+.env
+.env.*
+
+# macOS
+.DS_Store
