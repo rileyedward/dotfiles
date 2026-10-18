@@ -2,6 +2,8 @@
 
 Reproduce a fully configured macOS development machine with a single command.
 
+> **Status:** Active — in use on my machine.
+
 ## Overview
 
 ### What is dotfiles?
@@ -9,8 +11,6 @@ Reproduce a fully configured macOS development machine with a single command.
 dotfiles is the source of truth for this machine's configuration — the zsh setup, the LazyVim config, the Ghostty terminal, git, and the list of applications that make up a working environment. Rather than scattering these across `$HOME` where they're invisible and unversioned, everything lives here and is symlinked into place, so editing `~/.zshrc` *is* editing this repo and `git status` is the record of what changed.
 
 Everything is themed [catppuccin-macchiato](https://github.com/catppuccin) end to end — the shell prompt, Neovim, and the terminal. Laravel Herd supplies PHP, Composer and Node.
-
-### Why Use dotfiles?
 
 Setting up a new laptop is an afternoon of half-remembered settings, and the config on an existing one is one accidental `rm` away from gone. Neither problem announces itself until it's too late — a fresh Oh My Zsh install silently drops a custom theme, an unversioned Neovim config exists on exactly one disk, and a typo in `~/.ssh/config` sits there breaking every connection until someone reads the file closely.
 
@@ -35,21 +35,21 @@ To check what's already present on a machine you're adopting this on:
 
 1. **Homebrew** manages the CLI tools and applications:
 
-   ```bash
-   brew --version
-   ```
+    ```bash
+    brew --version
+    ```
 
 2. **Oh My Zsh** provides the shell framework and prompt:
 
-   ```bash
-   ls ~/.oh-my-zsh
-   ```
+    ```bash
+    ls ~/.oh-my-zsh
+    ```
 
 3. **Neovim** (0.9+) is required by LazyVim:
 
-   ```bash
-   nvim --version
-   ```
+    ```bash
+    nvim --version
+    ```
 
 > Cloning over SSH needs a key on the machine already. On a genuinely fresh Mac, clone over HTTPS and let `scripts/ssh-setup.sh` generate one for you.
 
@@ -57,41 +57,41 @@ To check what's already present on a machine you're adopting this on:
 
 1. Clone the repository:
 
-   ```bash
-   git clone git@github.com:rileyedward/dotfiles.git ~/rileyedward/dotfiles
-   cd ~/rileyedward/dotfiles
-   ```
+    ```bash
+    git clone git@github.com:rileyedward/dotfiles.git ~/rileyedward/dotfiles
+    cd ~/rileyedward/dotfiles
+    ```
 
 2. Run the bootstrap script:
 
-   ```bash
-   ./bootstrap.sh --macos
-   ```
+    ```bash
+    ./bootstrap.sh --macos
+    ```
 
-   Drop `--macos` to skip system preferences and apply them later with `./scripts/macos.sh`.
+    Drop `--macos` to skip system preferences and apply them later with `./scripts/macos.sh`.
 
 3. Add the printed SSH public key to [GitHub](https://github.com/settings/keys), then verify:
 
-   ```bash
-   ssh -T git@github.com
-   ```
+    ```bash
+    ssh -T git@github.com
+    ```
 
 4. Open a new shell and launch Neovim. lazy.nvim installs the pinned plugin set on first run:
 
-   ```bash
-   exec zsh
-   nvim
-   ```
+    ```bash
+    exec zsh
+    nvim
+    ```
 
 5. Install the LSP servers from inside Neovim:
 
-   ```
-   :Mason
-   ```
+    ```text
+    :Mason
+    ```
 
 ## Usage
 
-### Linking configs on an existing machine
+### Linking Configs on an Existing Machine
 
 Preview every change before committing to it:
 
@@ -107,7 +107,7 @@ Then link for real:
 
 Anything already at a target path is moved to `~/.dotfiles-backup/<timestamp>/` first. To revert, copy that directory's contents back over `$HOME`. Worth running from a fresh terminal window, so a mistake in `.zshrc` can't lock you out of the shell you're working in.
 
-### Setting your git identity
+### Setting Your Git Identity
 
 ```bash
 ./scripts/git-identity.sh
@@ -115,7 +115,7 @@ Anything already at a target path is moved to `~/.dotfiles-backup/<timestamp>/` 
 
 Prompts for a name and email and writes `~/.gitconfig.local`, which `home/.gitconfig` includes and which is never committed.
 
-### Applying system preferences
+### Applying System Preferences
 
 ```bash
 ./scripts/macos.sh
@@ -123,7 +123,7 @@ Prompts for a name and email and writes `~/.gitconfig.local`, which `home/.gitco
 
 The one script here with side effects on a machine you're already using. Read it before running it — every value is commented with what it controls.
 
-### Adding a new dotfile
+### Adding a New Dotfile
 
 1. Copy the file into `home/` (for `$HOME`) or `config/` (for `~/.config`).
 2. Add a `link` line to `install.sh`.
@@ -132,7 +132,7 @@ The one script here with side effects on a machine you're already using. Read it
 
 ## Project Structure
 
-```
+```text
 bootstrap.sh                fresh-machine setup, start to finish
 install.sh                  symlinks only; idempotent; --dry-run
 Brewfile                    brew bundle: CLI tools, applications, fonts
@@ -183,7 +183,7 @@ ssh/config                  sanitized SSH config template
 
 For anything machine-specific or private, copy `zsh/local.zsh.example` to `zsh/local.zsh` (gitignored), or write `~/.zshrc.local`. Both are sourced last, so either can override everything above.
 
-### The catppuccin theme
+### The Catppuccin Theme
 
 Oh My Zsh doesn't ship a catppuccin theme, so it's vendored here and linked into `$ZSH_CUSTOM/themes/`. On the machine this repo came from it had been dropped into `~/.oh-my-zsh/themes/` instead — untracked by Oh My Zsh's own git repo, where a reinstall would have silently deleted it and reverted the prompt to the default.
 
@@ -211,3 +211,11 @@ Excluded on purpose, either because it's secret or because it's rebuildable stat
 - **Machine-local** — `~/.config/jgit/config` (PhpStorm's per-disk filesystem timing cache), `~/.gradle`, `~/.npm`.
 
 Sublime Text's preferences are a single small file that Package Control regenerates, and Warp cloud-syncs its own settings; neither is worth tracking.
+
+## Contributing
+
+This is my personal setup, so I'm not looking for pull requests, but you're welcome to borrow anything from it under the license below.
+
+## License
+
+Released under the [MIT License](LICENSE).
