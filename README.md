@@ -2,13 +2,13 @@
 
 Reproduce a fully configured macOS development machine with a single command.
 
-> **Status:** Active — in use on my machine.
+> **Status:** Reference — my personal macOS setup, shared for anyone to borrow from.
 
 ## Overview
 
 ### What is dotfiles?
 
-dotfiles is the source of truth for this machine's configuration — the zsh setup, the LazyVim config, the Ghostty terminal, git, and the list of applications that make up a working environment. Rather than scattering these across `$HOME` where they're invisible and unversioned, everything lives here and is symlinked into place, so editing `~/.zshrc` *is* editing this repo and `git status` is the record of what changed.
+dotfiles is the source of truth for my macOS development setup — the zsh setup, the LazyVim config, the Ghostty terminal, git, and the list of applications that make up a working environment. Rather than scattering these across `$HOME` where they're invisible and unversioned, everything lives here and is symlinked into place, so editing `~/.zshrc` *is* editing this repo and `git status` is the record of what changed.
 
 Everything is themed [catppuccin-macchiato](https://github.com/catppuccin) end to end — the shell prompt, Neovim, and the terminal. Laravel Herd supplies PHP, Composer and Node.
 
